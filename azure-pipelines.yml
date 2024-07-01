@@ -45,3 +45,14 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
+- task: AdvancedSecurity-Codeql-Init@1
+  displayName: Initialize CodeQL
+  inputs:
+    languages: 'csharp'
+ 
+- task: AdvancedSecurity-Codeql-Autobuild@1
+  displayName: AutoBuild
+ 
+- task: AdvancedSecurity-Codeql-Analyze@1
+  displayName: Perform CodeQL Analysis
