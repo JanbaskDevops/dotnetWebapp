@@ -9,36 +9,48 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-
 stages:
 - stage: build
   jobs:
-    - job: build
-      steps:
-      - script: dotnet build
-        displayName: 'dotnet build'
-      
-      - script: dotnet publish -o $(build.artifactStagingDirectory)
-        displayName: 'publish artifacts'
-      
-      - task: PublishPipelineArtifact@1
+    - job: 
+      steps: 
+      - task: Bash@3
         inputs:
-          targetPath: $(build.artifactStagingDirectory)
-          artifact: 'drop'
-          publishLocation: 'pipeline'
-
-
-- stage: test
+          targetType: 'inline'
+          script: |
+            # Write your commands here
+            
+            echo 'Hello world'
+- stage: ReleasetoDev
   jobs:
-    - job: test
-      steps:
-      - task: DotNetCoreCLI@2
+    - job: 
+      steps: 
+      - task: Bash@3
         inputs:
-          command: 'test'
-          projects: '**/*[Tt]est*/*.csproj'
-          publishTestResults: true
-          arguments: '--configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
+          targetType: 'inline'
+          script: |
+            # Write your commands here
+            
+            echo 'Hello world'
+- stage: ReleaseToTest
+  jobs:
+    - job: 
+      steps: 
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: |
+            # Write your commands here
+            
+            echo 'Hello world'
+- stage: ReleaseToProd
+  jobs:
+    - job: 
+      steps: 
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: |
+            # Write your commands here
+            
+            echo 'Hello world'
