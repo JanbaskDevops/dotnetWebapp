@@ -47,7 +47,7 @@ stages:
 - stage: Deploy
   jobs:
   - deployment: Deploy
-    environment: 'Production'
+    environment: 'Development'
     strategy:
       runOnce:
         deploy:
