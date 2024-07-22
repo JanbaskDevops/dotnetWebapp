@@ -22,8 +22,8 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
-            apt-get update
-            apt install openjdk-21-jre-headless -y
+            sudo apt-get update
+            sudo apt install openjdk-21-jre-headless -y
 
 - stage: ReleasetoDev
   jobs:
