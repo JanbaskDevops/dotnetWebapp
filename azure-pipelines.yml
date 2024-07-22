@@ -17,6 +17,18 @@ stages:
       - task: Bash@3
         inputs:
           targetType: 'inline'
+          script: |
+            sudo apt-get update
+            sudo apt install git -y
+
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: |
+            sudo git clone https://github.com/spring-projects/spring-petclinic.git
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
           script: 'echo ''Hello world'''
       - task: Bash@3
         inputs:
@@ -24,6 +36,22 @@ stages:
           script: |
             sudo apt-get update
             sudo apt install openjdk-21-jre-headless -y
+
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: |
+            sudo apt-get update
+            sudo apt install maven -y
+
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: |
+            sudo mvn package
+
+
+
 
 - stage: ReleasetoDev
   jobs:
