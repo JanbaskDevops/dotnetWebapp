@@ -20,6 +20,7 @@ stages:
           script: |
             sudo apt-get update
             sudo apt install git -y
+        displayName: Installing git
 
       - task: Bash@3
         inputs:
