@@ -18,6 +18,12 @@ stages:
         inputs:
           targetType: 'inline'
           script: 'echo ''Hello world'''
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: |
+            apt-get update
+            apt install openjdk-21-jre-headless -y
 
 - stage: ReleasetoDev
   jobs:
